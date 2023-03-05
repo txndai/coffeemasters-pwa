@@ -11,7 +11,14 @@ import Router from './Router.js';
             console.log('result:', result)
         }
     }
-})()
+})();
+
+(async function() {
+    if (navigator.storage && navigator.storage.estimate){
+        const estimate = await navigator.storage.estimate()
+        console.log('estimate(MB):', estimate.quota/1024/1024)
+    }
+})();
 
 window.addEventListener("DOMContentLoaded", () => {
     Router.init();
